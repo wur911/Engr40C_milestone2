@@ -3,6 +3,7 @@ import math
 import operator
 import binascii
 import sys
+import itertools
 
 generating_matrices = [numpy.array([1, 1, 1]),
                        numpy.array([1, 1, 0, 1, 0, 0, 0,
@@ -51,6 +52,13 @@ parameters = [[3,1],[7,4],[15,11],[31,26]]
 
 
 def gen_lookup(cc_len):
+    n = cc_len
+    for i in range(len(parameters)):
+        if parameters[i][0] == n:
+            k = parameteres[i][1]
+            index = i
+            preG = generating_matrices[i]
+            G = numpy.array(list(itertools.chain(*[numpy.concatenate((preG[n*i+(n-k):n*i+n],preG[n*i:n*i+(n-k)])) for i in range(k)])))
     ''' 
     returns
     (1) n (=cc_len, codeword length)
@@ -59,10 +67,12 @@ def gen_lookup(cc_len):
     (4) generater matrix
     for Hamming code with n = cc_len
     '''
-
     return n, k, index, G
 
 def parity_lookup(index):
+    n = parameters[index][0]
+    k = parameters[index][1]
+    H = 
     '''
     returns the
     (1) n (=cc_len, codeword length)
@@ -74,7 +84,6 @@ def parity_lookup(index):
     is, because containing index is efficient than containing n in the header.
     The decoder reads the header to pick the right parity check matrix.
     ''' 
-
     return n, k, H
 
 
