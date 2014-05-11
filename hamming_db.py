@@ -72,7 +72,8 @@ def gen_lookup(cc_len):
 def parity_lookup(index):
     n = parameters[index][0]
     k = parameters[index][1]
-    H = 
+    preH = generating_matrices[index]
+    H = numpy.concatenate([numpy.concatenate((preH[i::n],[0]*i,[1],[0]*(n-k-i-1))) for i in range(n-k)]).astype(int)
     '''
     returns the
     (1) n (=cc_len, codeword length)
