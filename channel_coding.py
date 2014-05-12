@@ -15,20 +15,38 @@ def get_frame(databits, cc_len):
     Return the resulted frame (channel-coded header and databits)
     '''
     index,payload = encode(databits,cc_len)
-    header = get_header(payload,index)
+    header = encode(get_header(payload,index), 3)
     frame = header+payload
     return frame
     
 def get_header(payload, index):
+    header = []
+    if index == 0: header = [0,0]
+    if index == 1: header = [0,1]
+    if index == 2: header = [1,0]
+    if index == 3: header = [1,1]
     '''
     Construct and return header for channel coding information.
     Do not confuse this with header from source module.
     Communication system use layers and attach nested headers from each layers 
     '''
-    
+
     return header
     
 def encode(databits, cc_len):
+    coded_bits = []
+    n, k, index, G = hamming_db.gen_lookup(cc_len)
+    #Pad with zeros if necessary
+    while(len(databits) % k != 0): databits.append(0)
+    for i in range(len(databits)/k):
+        word = databits[i*k: i*k+k]
+        for col in range(n):
+            bit = 0
+            for row in range(k):
+                #XOR dot product of data bits and generator matrix
+                bit = bit ^ (word[row]*G[col+row*n])
+            coded_bits.append(bit);
+
     '''
     Perfrom channel coding to <databits> with Hamming code of n=<cc_len>
     Pad zeros to the databits if needed.
