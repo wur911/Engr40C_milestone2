@@ -25,13 +25,16 @@ def get_header(payload, index):
     if index == 1: header = [0,1]
     if index == 2: header = [1,0]
     if index == 3: header = [1,1]
+    length = len(payload)
+    binlen = [int(d) for d in bin(length)[2:]]
+    binlen = [0]*max(0,24-len(binlen)) + binlen
+    header += binlen
     '''
     Construct and return header for channel coding information.
     Do not confuse this with header from source module.
     Communication system use layers and attach nested headers from each layers 
     '''
-
-    return header
+    return numpy.array(header)
     
 def encode(databits, cc_len):
     coded_bits = []
@@ -52,7 +55,6 @@ def encode(databits, cc_len):
     Pad zeros to the databits if needed.
     Return the index of our used code and the channel-coded databits
     '''
-    
     return index, coded_bits
 
 ''' Receiver side ---------------------------------------------------
@@ -63,9 +65,10 @@ def get_databits(recd_bits):
     Parse the header and perform channel decoding.
     Note that header is also channel-coded    
     '''
-    header = recd_bits[:6]
-    coded_bits = recd_bits[6:]
-    index = parse_header
+    header_enc = recd_bits[:24]
+    header_dec = decode(header_enc,0)
+    index,length = parse_header(header_dec)
+    coded_bits = recd_bits[24:length+24]
     databits = decode(coded_bits,index)
     return databits
 
@@ -74,19 +77,9 @@ def parse_header(header):
     Parse the header received from channel-decoded bits
     Use a (3,1,3) Hamming code.
     '''
-    first_bit = header[0]+header[1]+header[2]
-    second_bit = header[3]+header[4]+header[5]
-    if first_bit < 2 and second_bit < 2:
-        index = 0
-    elif first_bit < 2 and second_bit >= 2:
-        index = 1
-    elif first_bit >= 2 and second_bit < 2:
-        index = 2
-    elif first_bit >= 2 and second_bit >=2:
-        index = 3
-    else:
-        index = -1
-    return index
+    index = int(''.join(str(s) for s in header[:2]),2)
+    length = int(''.join(str(s) for s in header[2:]),2)
+    return index,length
 
 def decode(coded_bits, index):
     '''
