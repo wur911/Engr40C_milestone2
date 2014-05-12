@@ -74,18 +74,22 @@ def parity_lookup(index):
     k = parameters[index][1]
     preH = generating_matrices[index]
     H = numpy.concatenate([numpy.concatenate((preH[i::n],[0]*i,[1],[0]*(n-k-i-1))) for i in range(n-k)]).astype(int)
+    sydnromes = []
+    for i in range(n):
+        sydromes += H[i::n].tolist()
     '''
     returns the
     (1) n (=cc_len, codeword length)
     (2) k (length of data bit in each codeword)
     (3) index (index of the corresponding code in the above lookup table)
     (4) parity check matrix
+    (5) list of syndromes
     matched by the lookup table above given the index
     The reason why this takes the index as the input while gen_lookup takes cc_len
     is, because containing index is efficient than containing n in the header.
     The decoder reads the header to pick the right parity check matrix.
     ''' 
-    return n, k, H
+    return n, k, H, syndromes
 
 
 

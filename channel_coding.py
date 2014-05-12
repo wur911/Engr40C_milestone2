@@ -15,9 +15,9 @@ def get_frame(databits, cc_len):
     Return the resulted frame (channel-coded header and databits)
     '''
     index,payload = encode(databits,cc_len)
-    header = encode(get_header(payload,index), 3)
+    header_index,header = encode(get_header(payload,index), 3)
     frame = header+payload
-    return frame
+    return numpy.array(frame)
     
 def get_header(payload, index):
     header = []
@@ -34,7 +34,7 @@ def get_header(payload, index):
     Do not confuse this with header from source module.
     Communication system use layers and attach nested headers from each layers 
     '''
-    return numpy.array(header)
+    return header
     
 def encode(databits, cc_len):
     coded_bits = []
@@ -82,9 +82,25 @@ def parse_header(header):
     return index,length
 
 def decode(coded_bits, index):
+    decoded_bits = []
+    n, k, H, syndromes = hamming_db.parity_lookup(index)
+    for i in range(len(coded_bits)/n):
+        enc_word = databits[i*n: i*n+n]
+        parity = []
+        for row in range(n-k):
+            bit = 0
+            for col in range(n):
+                #XOR dot product of data bits and generator matrix
+                bit = bit ^ (word[col]*G[col+row*n])
+            parity.append(bit);
+        if (parity in syndromes):
+            error_index = syndromes.index(parity)
+            enc_word[error_index] ^= 1
+        decoded_bits.append(enc_word[:k])
+ 
     '''
     Decode <coded_bits> with Hamming code which corresponds to <index>
     Return decoded bits
     '''
-
+    
     return decoded_bits
