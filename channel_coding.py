@@ -34,7 +34,6 @@ def get_header(payload, index):
     Do not confuse this with header from source module.
     Communication system use layers and attach nested headers from each layers 
     '''
-    print header
     return header
     
 def encode(databits, cc_len):
@@ -68,7 +67,6 @@ def get_databits(recd_bits):
     Parse the header and perform channel decoding.
     Note that header is also channel-coded    
     '''
-
     header_enc = recd_bits[:72].tolist()
     header_dec = decode(header_enc,0)
     index,length = parse_header(header_dec)
@@ -81,7 +79,6 @@ def parse_header(header):
     Parse the header received from channel-decoded bits
     Use a (3,1,3) Hamming code.
     '''
-    print header
     index = int(''.join("%s" % n for n in header[:2]),2)
     length = int(''.join("%s" % n for n in header[2:]),2)
     return index,length
