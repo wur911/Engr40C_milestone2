@@ -79,7 +79,6 @@ def parse_header(header):
     Parse the header received from channel-decoded bits
     Use a (3,1,3) Hamming code.
     '''
-    print header
     index = int(''.join("%s" % n for n in header[:2]),2)
     length = int(''.join("%s" % n for n in header[2:]),2)
     return index,length
