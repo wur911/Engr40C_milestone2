@@ -1,0 +1,120 @@
+Running sendrecv.py
+Parameters in experiment:
+	Samples per bit: 256
+	Channel type: Bypass
+	  Noise: 0.175  lag: 0 h: [ 1 ]
+	Frequency: 1000 Hz
+	Source coding: Off
+	Channel coding: n = 7
+	Encryption: Off
+	Interleaving: Off
+Source: 
+	Header length:  18
+	Source type:  text
+	Payload Length:  800
+	Header:  [1 0 0 0 0 0 0 0 1 1 0 0 1 0 0 0 0 0]
+Transmitter: 
+	Sent Preamble:  [1 0 1 1 0 1 1 1 0 0 0 1 1 1 1 1 0 0 1 1 0 1 0 1]
+	Number of samples being sent: 492288
+Receiver: 
+	0/1 threshold: 0.386
+	I think the Barker sequence starts at bit 199 (sample 51159 )
+	SNR from preamble: 12.8 dB
+	Recd preamble:  [1 0 1 1 0 1 1 1 0 0 0 1 1 1 1 1 0 0 1 1 0 1 0 1]
+Sink:
+	Recd header:  [1 0 0 0 0 0 0 0 1 1 0 0 1 0 0 0 0 0]
+	Source type:  text
+	Length from header:  800
+	Recd 800 source bits
+	Text recd: ËrLumQWHw'xDvXDABLiWdt31rM5wuPGWt5nM)Izcay/pb	]XunVaIASu0lFoY8dmAIQo3W9tEnyhiOJUjQSUqL3xmozt5aYRi2
+Hamming distance for payload at frequency 1000 Hz: 16 BER: 0.02
+Running sendrecv.py
+Parameters in experiment:
+	Samples per bit: 256
+	Channel type: Bypass
+	  Noise: 0.175  lag: 0 h: [ 1 ]
+	Frequency: 1000 Hz
+	Source coding: Off
+	Channel coding: n = 7
+	Encryption: Off
+	Interleaving: Off
+Source: 
+	Header length:  18
+	Source type:  text
+	Payload Length:  800
+	Header:  [1 0 0 0 0 0 0 0 1 1 0 0 1 0 0 0 0 0]
+Transmitter: 
+	Sent Preamble:  [1 0 1 1 0 1 1 1 0 0 0 1 1 1 1 1 0 0 1 1 0 1 0 1]
+	Number of samples being sent: 492288
+Receiver: 
+	0/1 threshold: 0.385
+	I think the Barker sequence starts at bit 199 (sample 51154 )
+	SNR from preamble: 11.8 dB
+	Recd preamble:  [1 0 1 1 0 1 1 1 0 0 0 1 1 1 1 1 0 0 1 1 0 1 0 1]
+Sink:
+	Recd header:  [1 0 0 0 0 0 0 0 1 1 0 0 1 0 0 0 0 0]
+	Source type:  text
+	Length from header:  800
+	Recd 800 source bits
+	Text recd: JrÌumSWHwwxDvXDLABÌiWdt31rM5wu@GSt5FO9IúgayoprIUXunViOIASu0,GoY8dmAIQo3W90EnqhaOJUjQSUuL3xMgzt5aYRi2
+Hamming distance for payload at frequency 1000 Hz: 15 BER: 0.01875
+Running sendrecv.py
+Parameters in experiment:
+	Samples per bit: 256
+	Channel type: Bypass
+	  Noise: 0.175  lag: 0 h: [ 1 ]
+	Frequency: 1000 Hz
+	Source coding: Off
+	Channel coding: n = 7
+	Encryption: Off
+	Interleaving: Off
+Source: 
+	Header length:  18
+	Source type:  text
+	Payload Length:  800
+	Header:  [1 0 0 0 0 0 0 0 1 1 0 0 1 0 0 0 0 0]
+Transmitter: 
+	Sent Preamble:  [1 0 1 1 0 1 1 1 0 0 0 1 1 1 1 1 0 0 1 1 0 1 0 1]
+	Number of samples being sent: 492288
+Receiver: 
+	0/1 threshold: 0.385
+	I think the Barker sequence starts at bit 199 (sample 51149 )
+	SNR from preamble: 12.7 dB
+	Recd preamble:  [1 0 1 1 0 1 1 1 0 0 0 1 1 1 1 1 0 0 1 1 0 1 0 1]
+Sink:
+	Recd header:  [1 0 0 0 0 0 0 0 1 1 0 0 1 0 0 0 0 0]
+	Source type:  text
+	Length from header:  800
+	Recd 798 source bits
+	Text recd: KrÌuiSWHwgxDvXDDABLiUdt3rM5wuPGWt5fO9YzgayoprIUXunViIASu0LFoY8dmAAQo3W94EnyhiOJTjQSUuL3xmozt5aYPi
+Hamming distance for payload at frequency 1000 Hz: 13 BER: 0.016290726817
+Running sendrecv.py
+Parameters in experiment:
+	Samples per bit: 256
+	Channel type: Bypass
+	  Noise: 0.175  lag: 0 h: [ 1 ]
+	Frequency: 1000 Hz
+	Source coding: Off
+	Channel coding: n = 7
+	Encryption: Off
+	Interleaving: Off
+Source: 
+	Header length:  18
+	Source type:  text
+	Payload Length:  800
+	Header:  [1 0 0 0 0 0 0 0 1 1 0 0 1 0 0 0 0 0]
+Transmitter: 
+	Sent Preamble:  [1 0 1 1 0 1 1 1 0 0 0 1 1 1 1 1 0 0 1 1 0 1 0 1]
+	Number of samples being sent: 492288
+Receiver: 
+	0/1 threshold: 0.383
+	I think the Barker sequence starts at bit 199 (sample 51158 )
+	SNR from preamble: 12.2 dB
+	Recd preamble:  [1 0 1 1 0 1 1 1 0 0 0 1 1 1 1 1 0 0 1 1 0 1 0 1]
+Sink:
+	Recd header:  [1 0 0 0 0 0 0 0 1 1 0 0 1 0 0 0 0 0]
+	Source type:  text
+	Length from header:  800
+	Recd 800 source bits
+	Text recd: KrHumSWHwgxDvXDLALiWdt312M5wuGWt5fO9IzgayoprIUXunViKAASq0lFoY8dmAISo3W9<GnyhiOJUjQSUuL3xmozt5aIRi2
+Hamming distance for payload at frequency 1000 Hz: 12 BER: 0.015
