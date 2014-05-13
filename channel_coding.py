@@ -65,12 +65,12 @@ def get_databits(recd_bits):
     Parse the header and perform channel decoding.
     Note that header is also channel-coded    
     '''
-    header_enc = recd_bits[:24]
+    header_enc = recd_bits[:72]
     print header_enc
     header_dec = decode(header_enc,0)
     print header_dec
     index,length = parse_header(header_dec)
-    coded_bits = recd_bits[24:length+24]
+    coded_bits = recd_bits[72:length+72]
     databits = decode(coded_bits,index)
     return databits
 
@@ -79,6 +79,7 @@ def parse_header(header):
     Parse the header received from channel-decoded bits
     Use a (3,1,3) Hamming code.
     '''
+    print header
     index = int(''.join("%s" % n for n in header[:2]),2)
     length = int(''.join("%s" % n for n in header[2:]),2)
     return index,length
