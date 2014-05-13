@@ -91,6 +91,10 @@ if __name__ == '__main__':
         parser.add_option("-E", "--encrypt", action="store_true", dest="encrypt",
                             default=False, help="use XOR with key for encryption")
 
+        # Interleaving option
+        parser.add_option("-I", "--interleaving",action="store_true", dest="interleave",
+                            default=False, help="use interleaving to combat burst errors")
+
         (opt,args) = parser.parse_args()
 
         
@@ -108,6 +112,7 @@ if __name__ == '__main__':
     print '\tSource coding:', ('On' if opt.compress else 'Off')
     print '\tChannel coding:', ('n = %d' % opt.cc_len if opt.cc_len!=0 else 'Off')
     print '\tEncryption:', ('On' if opt.encrypt else 'Off')
+    print '\tInterleaving:', ('On' if opt.interleave else 'Off')
 
 ########################################################
 
