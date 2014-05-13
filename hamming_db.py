@@ -55,7 +55,7 @@ def gen_lookup(cc_len):
     n = cc_len
     for i in range(len(parameters)):
         if parameters[i][0] == n:
-            k = parameteres[i][1]
+            k = parameters[i][1]
             index = i
             preG = generating_matrices[i]
             G = numpy.array(list(itertools.chain(*[numpy.concatenate((preG[n*i+(n-k):n*i+n],preG[n*i:n*i+(n-k)])) for i in range(k)])))
