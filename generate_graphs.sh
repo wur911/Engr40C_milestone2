@@ -38,9 +38,22 @@ python sendrecv.py -f testfiles/random_short.txt -c 1000 -s 256 -q 200 -C 31 -b 
 
 for file in *c0
 do
-    
+    grep BER file > BER_c0
 done
-
-
-
+for file in *c1
+do
+    grep BER file > BER_c1
+done
+for file in *c2
+do
+    grep BER file > BER_c2
+done
+for file in *c3
+do
+    grep BER file > BER_c3
+done
+for file in *c4
+do
+    grep BER file > BER_c4
+done
 
