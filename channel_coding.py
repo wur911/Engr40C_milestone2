@@ -86,6 +86,7 @@ def parse_header(header):
 def decode(coded_bits, index):
     decoded_bits = []
     n, k, H, syndromes = hamming_db.parity_lookup(index)
+
     for i in range(len(coded_bits)/n):
         enc_word = coded_bits[i*n: i*n+n]
         parity = []
