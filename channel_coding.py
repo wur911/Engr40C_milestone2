@@ -27,13 +27,14 @@ def get_header(payload, index):
     if index == 3: header = [1,1]
     length = len(payload)
     binlen = [int(d) for d in bin(length)[2:]]
-    binlen = [0]*max(0,24-len(binlen)) + binlen
+    binlen = [0]*max(0,22-len(binlen)) + binlen
     header += binlen
     '''
     Construct and return header for channel coding information.
     Do not confuse this with header from source module.
     Communication system use layers and attach nested headers from each layers 
     '''
+    print header
     return header
     
 def encode(databits, cc_len):
@@ -57,6 +58,8 @@ def encode(databits, cc_len):
     '''
     return index, coded_bits
 
+
+
 ''' Receiver side ---------------------------------------------------
 '''    
 def get_databits(recd_bits):
@@ -66,9 +69,7 @@ def get_databits(recd_bits):
     Note that header is also channel-coded    
     '''
     header_enc = recd_bits[:72].tolist()
-    print header_enc
     header_dec = decode(header_enc,0)
-    print header_dec
     index,length = parse_header(header_dec)
     coded_bits = recd_bits[72:length+72].tolist()
     databits = decode(coded_bits,index)
@@ -87,10 +88,8 @@ def parse_header(header):
 def decode(coded_bits, index):
     decoded_bits = []
     n, k, H, syndromes = hamming_db.parity_lookup(index)
-    print n,k
     for i in range(len(coded_bits)/n):
         enc_word = coded_bits[i*n: i*n+n]
-        print enc_word
         parity = []
         for row in range(n-k):
             bit = 0
@@ -102,11 +101,9 @@ def decode(coded_bits, index):
             error_index = syndromes.index(parity)
             enc_word[error_index] ^= 1
         decoded_bits += enc_word[:k]
-        print decoded_bits
  
     '''
     Decode <coded_bits> with Hamming code which corresponds to <index>
     Return decoded bits
     '''
-    
     return decoded_bits
