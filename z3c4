@@ -239,3 +239,64 @@ Sink:
 	Text recd: KrLum[WHwgxDvXDLABLiWdt31rM5wuPGWt5fO9IzgayoprIUXunViOIASu0lFoY8dmAIQo3W94EnyhiO
 UjQSUuL3xmo:t5aYRi2
 Hamming distance for payload at frequency 1000 Hz: 3 BER: 0.00375
+Running sendrecv.py
+Parameters in experiment:
+	Samples per bit: 256
+	Channel type: Bypass
+	  Noise: 0.15  lag: 0 h: [ 1 ]
+	Frequency: 1000 Hz
+	Source coding: Off
+	Channel coding: n = 31
+	Encryption: Off
+Source: 
+	Header length:  18
+	Source type:  text
+	Payload Length:  800
+	Header:  [1 0 0 0 0 0 0 0 1 1 0 0 1 0 0 0 0 0]
+Transmitter: 
+[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0]
+	Sent Preamble:  [1 0 1 1 0 1 1 1 0 0 0 1 1 1 1 1 0 0 1 1 0 1 0 1]
+	Number of samples being sent: 378880
+Receiver: 
+	0/1 threshold: 0.365
+	I think the Barker sequence starts at bit 199 (sample 51150 )
+	SNR from preamble: 14.2 dB
+	Recd preamble:  [1 0 1 1 0 1 1 1 0 0 0 1 1 1 1 1 0 0 1 1 0 1 0 1]
+Sink:
+	Recd header:  [1 0 0 0 0 0 0 0 1 1 0 0 1 0 0 0 0 0]
+	Source type:  text
+	Length from header:  800
+	Recd 800 source bits
+	Text recd: KrLumSWHwg8DvXDLABLiWdt31rM5wuPGWt5fO9IzeayoprIUXunViOIASu0lFoY8dmAIQo3W90EnyhhO
+jQSUuL3xmozp5aYRi2
+Hamming distance for payload at frequency 1000 Hz: 8 BER: 0.01
+Running sendrecv.py
+Parameters in experiment:
+	Samples per bit: 256
+	Channel type: Bypass
+	  Noise: 0.15  lag: 0 h: [ 1 ]
+	Frequency: 1000 Hz
+	Source coding: Off
+	Channel coding: n = 31
+	Encryption: Off
+Source: 
+	Header length:  18
+	Source type:  text
+	Payload Length:  800
+	Header:  [1 0 0 0 0 0 0 0 1 1 0 0 1 0 0 0 0 0]
+Transmitter: 
+[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0]
+	Sent Preamble:  [1 0 1 1 0 1 1 1 0 0 0 1 1 1 1 1 0 0 1 1 0 1 0 1]
+	Number of samples being sent: 378880
+Receiver: 
+	0/1 threshold: 0.360
+	I think the Barker sequence starts at bit 199 (sample 51162 )
+	SNR from preamble: 13.2 dB
+	Recd preamble:  [1 0 1 1 0 1 1 1 0 0 0 1 1 1 1 1 0 0 1 1 0 1 0 1]
+Sink:
+	Recd header:  [1 0 0 0 0 0 0 0 1 1 0 0 1 0 0 0 0 0]
+	Source type:  text
+	Length from header:  800
+	Recd 800 source bits
+	Text recd: KrLumSWHwg8DvXDLA@LiWdt31rM5wuPG×t5vO9IzgayoprHUX5nVhO	ASu0lFoY8dmAIQo3W94EnyhéOJUhQSU5L3xmozt5cYRi2
+Hamming distance for payload at frequency 1000 Hz: 12 BER: 0.015
