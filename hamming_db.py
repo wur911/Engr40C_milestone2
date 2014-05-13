@@ -74,9 +74,9 @@ def parity_lookup(index):
     k = parameters[index][1]
     preH = generating_matrices[index]
     H = numpy.concatenate([numpy.concatenate((preH[i::n],[0]*i,[1],[0]*(n-k-i-1))) for i in range(n-k)]).astype(int)
-    sydnromes = []
+    syndromes = []
     for i in range(n):
-        sydromes += H[i::n].tolist()
+        syndromes += H[i::n].tolist()
     '''
     returns the
     (1) n (=cc_len, codeword length)

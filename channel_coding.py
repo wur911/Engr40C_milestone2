@@ -77,21 +77,21 @@ def parse_header(header):
     Parse the header received from channel-decoded bits
     Use a (3,1,3) Hamming code.
     '''
-    index = int(''.join(str(s) for s in header[:2]),2)
-    length = int(''.join(str(s) for s in header[2:]),2)
+    index = int(''.join("%s" % n for n in header[:2]),2)
+    length = int(''.join("%s" % n for n in header[2:]),2)
     return index,length
 
 def decode(coded_bits, index):
     decoded_bits = []
     n, k, H, syndromes = hamming_db.parity_lookup(index)
     for i in range(len(coded_bits)/n):
-        enc_word = databits[i*n: i*n+n]
+        enc_word = coded_bits[i*n: i*n+n]
         parity = []
         for row in range(n-k):
             bit = 0
             for col in range(n):
                 #XOR dot product of data bits and generator matrix
-                bit = bit ^ (word[col]*G[col+row*n])
+                bit = bit ^ (enc_word[col]*H[col+row*n])
             parity.append(bit);
         if (parity in syndromes):
             error_index = syndromes.index(parity)
