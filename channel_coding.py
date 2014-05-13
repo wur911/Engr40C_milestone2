@@ -67,7 +67,7 @@ def get_databits(recd_bits):
     '''
 
     header_enc = recd_bits[:72].tolist()
-    print header_enc
+    #print header_enc
     header_dec = decode(header_enc,0)
     index,length = parse_header(header_dec)
     coded_bits = recd_bits[72:length+72].tolist()
@@ -79,7 +79,7 @@ def parse_header(header):
     Parse the header received from channel-decoded bits
     Use a (3,1,3) Hamming code.
     '''
-    print header
+    #print header
     index = int(''.join("%s" % n for n in header[:2]),2)
     length = int(''.join("%s" % n for n in header[2:]),2)
     return index,length
@@ -87,10 +87,10 @@ def parse_header(header):
 def decode(coded_bits, index):
     decoded_bits = []
     n, k, H, syndromes = hamming_db.parity_lookup(index)
-    print n,k
+    #print n,k
     for i in range(len(coded_bits)/n):
         enc_word = coded_bits[i*n: i*n+n]
-        print enc_word
+        #print enc_word
         parity = []
         for row in range(n-k):
             bit = 0
@@ -102,7 +102,7 @@ def decode(coded_bits, index):
             error_index = syndromes.index(parity)
             enc_word[error_index] ^= 1
         decoded_bits += enc_word[:k]
-        print decoded_bits
+        #print decoded_bits
  
     '''
     Decode <coded_bits> with Hamming code which corresponds to <index>
