@@ -66,9 +66,7 @@ def get_databits(recd_bits):
     Note that header is also channel-coded    
     '''
     header_enc = recd_bits[:72]
-    print header_enc
     header_dec = decode(header_enc,0)
-    print header_dec
     index,length = parse_header(header_dec)
     coded_bits = recd_bits[72:length+72]
     databits = decode(coded_bits,index)
